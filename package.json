@@ -1,20 +1,52 @@
 {
-  "name": "chat-client",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "tempdata",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^3.9.3",
+    "@material-ui/icons": "^3.0.2",
+    "jest": "^23.6.0",
+    "jest-environment-jsdom": "^24.5.0",
+    "multiselect-dropdown-react": "^1.0.5",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "2.1.8",
+    "yup": "^0.27.0"
+  },
+  "jest": {
+    "verbose": true,
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTest.js",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "lib",
+      "/.babelrc"
+    ]
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:c": "jest --coverage",
+    "eject": "react-scripts eject"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/STRohan/chat-client.git"
+  "eslintConfig": {
+    "extends": "react-app"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/STRohan/chat-client/issues"
-  },
-  "homepage": "https://github.com/STRohan/chat-client#readme"
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-strict-mode": "^6.24.1",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2"
+  }
 }
