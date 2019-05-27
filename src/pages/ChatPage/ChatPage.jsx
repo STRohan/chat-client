@@ -3,8 +3,10 @@ import PropTypes from "prop-types";
 import Navbar from "../../components/Navbar";
 import Grid from "@material-ui/core/Grid";
 import { CssBaseline } from "@material-ui/core";
+import Chat from './components/Chat/Chat';
 
-class Chat extends React.Component {
+
+class ChatPage extends React.Component {
   state = {};
 
   render() {
@@ -22,6 +24,7 @@ class Chat extends React.Component {
           </Grid>
           <Grid item xs={9} style={{ backgroundColor: 'grey' }} >
             Chating Area
+            <Chat/>
           </Grid>
         </Grid>
         </div>
@@ -34,4 +37,4 @@ Chat.propTypes = {
   classes: PropTypes.shape().isRequired
   // history: PropTypes.shape().isRequired,
 };
-export default Chat;
+export default ChatPage;
