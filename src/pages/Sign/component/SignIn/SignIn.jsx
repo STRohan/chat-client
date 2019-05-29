@@ -16,8 +16,20 @@ import IconButton from '@material-ui/core/IconButton';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import * as yup from 'yup';
+import gql from "graphql-tag";
+import { Mutation, Query } from "react-apollo";
 import CircularProgress from '@material-ui/core/CircularProgress';
 
+const GET_USER = gql`
+  query {
+    GetUser {
+      id
+    name
+    email
+    password
+    }
+  }
+`;
 
 const styles = theme => ({
   main: {
@@ -79,7 +91,9 @@ class LogIn extends React.Component {
       email: '',
       err: {},
       password: '',
+      sub1: true,
       spinner: false,
+      displaySignIn: false,
       showPassword: false,
       isTouch: {
         email: false,
@@ -157,9 +171,21 @@ class LogIn extends React.Component {
     return !(check === 2 && touchCheck === 2);
   };
 
+  verifyHandler =  async (event) => {
+    this.setState({ spinner: true });
+    event.preventDefault();
+    <Query query={GET_USER} variables={{email: email}}>
+              {({ data }) => {
+                data.GetUser.password
+                this.setState({displaySignIn: true})} }
+              </Query>
+
+  }
+
+
   render() {
     const {
-      email, err, password, showPassword, spinner,
+      email, err, password, showPassword, spinner, displaySignIn, sub1,
     } = this.state;
     const sub = this.hasError();
     const { classes, open, onClose } = this.props;
@@ -230,7 +256,7 @@ class LogIn extends React.Component {
                     }}
                   />
                 </FormControl>
-                <Button
+                {(displaySignIn)?<Button
                   type="submit"
                   fullWidth
                   style={{ position: 'relative' }}
@@ -241,14 +267,19 @@ class LogIn extends React.Component {
                   className={classes.submit}
                 >
               Sign in
-                  {(spinner) ? (
-                    <CircularProgress
-                      style={{ position: 'absolute', bottom: 0 }}
-                      className={classes.progress}
-                      color="secondary"
-                    />
-                  ) : ''}
                 </Button>
+                : <Button
+                type="submit"
+                fullWidth
+                style={{ position: 'relative' }}
+                disabled={sub1}
+                variant="contained"
+                color="primary"
+                onClick={event => this.verifyHandler(event)}
+                className={classes.submit}
+              > Verify
+            </Button>
+          }
                 <Button fullWidth
                   style={{ position: 'relative' }}
                   onClick={onClose} 
@@ -271,3 +302,12 @@ LogIn.propTypes = {
 };
 
 export default withStyles(styles)(LogIn);
+
+
+// {(spinner) ? (
+//   <CircularProgress
+//     style={{ position: 'absolute', bottom: 0 }}
+//     className={classes.progress}
+//     color="secondary"
+//   />
+// ) : ''}

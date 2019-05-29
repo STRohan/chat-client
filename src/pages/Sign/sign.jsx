@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import SignIn from '../../components/SignIn';
-import SignUp from '../../components/SignUp';
+import SignIn from './component/SignIn';
+import SignUp from './component/SignUp';
 
 
 class Sign extends React.Component {
