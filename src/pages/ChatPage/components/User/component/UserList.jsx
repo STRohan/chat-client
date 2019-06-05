@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { Typography } from '@material-ui/core';
 
 
-class Message extends Component {
+class UserList extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
 handler = data => {
-    const {AllChat} = data;
-    const id = AllChat.map(e => e.id)
+    const {GetUsers} = data;
+    const id = GetUsers.map(e => e.id)
     return id;
 }
 
@@ -17,15 +17,15 @@ handler = data => {
       
       console.log(this.props);
       const {data} = this.props;
-      const {GetChat} = data;
+      const {GetUsers} = data;
       return (
       <>
         <div>
-            {GetChat.map(e => e.message)}
+            {GetUsers.map(e => e.name)}
             {/* {this.handler(data)} */}
             </div>
       </>
     );
   }
 }
-export default Message;
+export default UserList;

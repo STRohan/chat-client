@@ -171,16 +171,22 @@ class LogIn extends React.Component {
     return !(check === 2 && touchCheck === 2);
   };
 
-  verifyHandler =  async (event) => {
-    this.setState({ spinner: true });
-    event.preventDefault();
-    <Query query={GET_USER} variables={{email: email}}>
-              {({ data }) => {
-                data.GetUser.password
-                this.setState({displaySignIn: true})} }
-              </Query>
+  // verifyHandler =  async (event) => {
+  //   this.setState({ spinner: true });
+  //   event.preventDefault();
+  //   const{ email, password } = this.state;
+  //   <Query query={GET_USER} variables={{email: email}}>
+  //             {({ data }) => {
+  //               (data.GetUser.password === password) ? this.setState({displaySignIn: true})
+  //               : <MySnackbarContentWrapper
+  //                 variant="error"
+  //                 className={classes.margin}
+  //                 message="This is an error message!"
+  //               />
+  //             } }
+  //             </Query>
 
-  }
+  // }
 
 
   render() {
@@ -256,7 +262,8 @@ class LogIn extends React.Component {
                     }}
                   />
                 </FormControl>
-                {(displaySignIn)?<Button
+                {/* {(displaySignIn)? */}
+                <Button
                   type="submit"
                   fullWidth
                   style={{ position: 'relative' }}
@@ -268,7 +275,7 @@ class LogIn extends React.Component {
                 >
               Sign in
                 </Button>
-                : <Button
+                {/* : <Button
                 type="submit"
                 fullWidth
                 style={{ position: 'relative' }}
@@ -279,7 +286,7 @@ class LogIn extends React.Component {
                 className={classes.submit}
               > Verify
             </Button>
-          }
+          } */}
                 <Button fullWidth
                   style={{ position: 'relative' }}
                   onClick={onClose} 

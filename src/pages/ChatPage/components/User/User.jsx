@@ -1,30 +1,17 @@
 import React from "react";
 import gql from "graphql-tag";
 import { Mutation, Query } from "react-apollo";
-import Message from './component/message'
+import UserList from './component/UserList'
 
-const GET_CHAT = gql`
-  query($senderId: String!, $receiverId: String!) {
-    GetChat(senderId: $senderId, receiverId: $receiverId) {
-      id
-      senderId
-      receiverId
-      sender
-      receiver
-      message
-    }
-  }
-`;
 
-const GET_ALL_CHAT = gql`
+
+const GET_ALL_User= gql`
   query {
-  AllChat {
-    id
-    senderId
-    receiverId
-    sender
-    receiver
-    message
+    GetUsers {
+      id
+      name
+      email
+      password
     }
   }`;
 
@@ -33,7 +20,7 @@ const GET_ALL_CHAT = gql`
     constructor(props){
         super(props)
         this.state = {
-            message:''
+            userList:''
         }
     }
         render(){
@@ -41,24 +28,15 @@ const GET_ALL_CHAT = gql`
             const { message } = this.state 
             return(
                 <>
-                <Query query={GET_CHAT} variables={{senderId:'head@gmail.com.1' , receiverId: 'head2@gmail.com.2'}} >
+                <Query query={GET_ALL_User} >
                 {({ loading, error, data, subscribeToMore }) => {
                     if (loading) return 'loading';
                     if (error) return `Error!: ${error}`;
                     console.log('data::',data)
-                    return(<Message data={data} /> )
+                    return(<UserList data={data} /> )
                 }}
             </Query>
-                {/* <Query query={GET_CHAT} variables={{senderId:'head@gmail.com.1' , receiverId: 'head2@gmail.com.2'}} >
-    {({ loading, error, data }) => {
-      if (loading) return "Loading...";
-      if (error) return `Error! ${error.message}`;
-
-      return (
-        data
-      );
-    }}
-  </Query> */}
+                
                 
                 </>
             )

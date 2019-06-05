@@ -4,6 +4,8 @@ import Navbar from "../../components/Navbar";
 import Grid from "@material-ui/core/Grid";
 import { CssBaseline } from "@material-ui/core";
 import Chat from './components/Chat/Chat';
+import User from './components/User/User';
+import Paper from '@material-ui/core/Paper';
 
 
 class ChatPage extends React.Component {
@@ -21,6 +23,9 @@ class ChatPage extends React.Component {
           <Grid item xs={3} style={{ backgroundColor: 'darkGrey'  }} >
             
             User List
+            <Paper> 
+              <User/>
+              </Paper>
           </Grid>
           <Grid item xs={9} style={{ backgroundColor: 'grey' }} >
             Chating Area
